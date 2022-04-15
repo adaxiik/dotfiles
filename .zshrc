@@ -108,6 +108,18 @@ alias cat="bat"
 alias pip="pip3"
 #alias ohmyzsh="nano ~/.oh-my-zsh"
 alias clearswap="sudo swapoff -a && sudo swapon -a"
+alias pls="sudo"
+tomp4(){
+    ffmpeg -i "$1" -c:a copy "$2"
+}
+alias ls="lsd"
+alias la="lsd -la"
+alias monitor="btm"
+
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$PATH:$GEM_HOME/bin"
+
+
 
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
