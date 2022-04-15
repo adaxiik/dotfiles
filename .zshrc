@@ -109,7 +109,7 @@ alias pip="pip3"
 #alias ohmyzsh="nano ~/.oh-my-zsh"
 alias clearswap="sudo swapoff -a && sudo swapon -a"
 alias pls="sudo"
-tomp4(){
+convert(){
     ffmpeg -i "$1" -c:a copy "$2"
 }
 alias ls="lsd"
