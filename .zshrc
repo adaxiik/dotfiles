@@ -104,6 +104,8 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
+alias i3config="nvim ~adaxiik/.config/i3/config"
+
 alias cat="bat"
 alias pip="pip3"
 #alias ohmyzsh="nano ~/.oh-my-zsh"
@@ -115,10 +117,14 @@ convert(){
 alias ls="lsd"
 alias la="lsd -la"
 alias monitor="btm"
-
+alias vpn="/opt/cisco/anyconnect/bin/vpnui"
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PATH:$GEM_HOME/bin"
 
+export XDG_CURRENT_DESKTOP=KDE
+export XDG_SESSION_DESKTOP=KDE
+export SAL_USE_VCLPLUGIN=kde5
+export KDE_SESSION_VERSION=5
 
 
 prompt_context() {
