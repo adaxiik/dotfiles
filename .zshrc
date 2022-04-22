@@ -104,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
-alias i3config="nvim ~adaxiik/.config/i3/config"
+alias i3config="nvim ~/.config/i3/config"
 
 alias cat="bat"
 alias pip="pip3"
@@ -118,6 +118,9 @@ alias ls="lsd"
 alias la="lsd -la"
 alias monitor="btm"
 alias vpn="/opt/cisco/anyconnect/bin/vpnui"
+alias brightness="light -S"
+alias scr="import screens/ss$(date +%s).png"
+
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PATH:$GEM_HOME/bin"
 

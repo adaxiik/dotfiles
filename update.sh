@@ -8,3 +8,6 @@ cp ~/.config/i3/config ./i3config
 
 #alacritty
 cp ~/.alacritty.yml ./.alacritty.yml
+
+#nvim
+cp ~/.config/nvim/init.vim ./init.vim
