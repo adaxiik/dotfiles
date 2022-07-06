@@ -111,15 +111,18 @@ alias pip="pip3"
 #alias ohmyzsh="nano ~/.oh-my-zsh"
 alias clearswap="sudo swapoff -a && sudo swapon -a"
 alias pls="sudo"
-convert(){
+convertvid(){
     ffmpeg -i "$1" -c:a copy "$2"
 }
+
+
 alias ls="lsd"
 alias la="lsd -la"
 alias monitor="btm"
 alias vpn="/opt/cisco/anyconnect/bin/vpnui"
 alias brightness="light -S"
 alias scr="import screens/ss$(date +%s).png"
+alias androidbuild="~/Dokumenty/SDL/build-scripts/androidbuild.sh"
 
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PATH:$GEM_HOME/bin"
@@ -128,6 +131,17 @@ export XDG_CURRENT_DESKTOP=KDE
 export XDG_SESSION_DESKTOP=KDE
 export SAL_USE_VCLPLUGIN=kde5
 export KDE_SESSION_VERSION=5
+#source "/usr/lib/emsdk/emsdk_env.sh"
+export PATH=/usr/lib/emsdk:$PATH
+export PATH=/usr/lib/emsdk/node/14.18.2_64bit/bin:$PATH
+export PATH=/usr/lib/emsdk/upstream/emscripten:$PATH
+
+
+PATH="/opt/android-ndk:$PATH"                  # for 'ndk-build'
+PATH="/opt/android-sdk/tools:$PATH"           # for 'android'
+PATH="/opt/android-sdk/platform-tools:$PATH"  # for 'adb'
+export ANDROID_HOME="/opt/android-sdk"        # for gradle
+export ANDROID_NDK_HOME="/opt/android-ndk"     # for gradle
 
 
 prompt_context() {

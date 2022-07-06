@@ -43,22 +43,27 @@ exec --no-startup-id nm-applet
 
 
 
-#change monitor position
+# change monitor position
 exec --no-startup-id xrandr --output DisplayPort-0 --left-of eDP
 
-#bg
+# bg
 exec --no-startup-id feh --bg-fill ~/backgrounds/bluemountain.jpg
 
-#clonky
-exec --no-startup-id start_conky_green
+# clonky
+# exec --no-startup-id start_conky_green
 
 
-#brightness
+# brightness
 bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
 
-#scr
+# scr
 bindsym $mod+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
+# focus_follows_mouse no
+
+# boomber
+bindsym $mod+b exec boomer
 
 
 
@@ -179,7 +184,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Tomáš je pořád nula.. Opravdu chcete odeít z tohoto úžasného systému ?' -B 'Ano, Tomáš je Nula' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Bye :( ' -B 'See ya later' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
