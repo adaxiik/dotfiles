@@ -110,9 +110,13 @@ alias cat="bat"
 alias pip="pip3"
 #alias ohmyzsh="nano ~/.oh-my-zsh"
 alias clearswap="sudo swapoff -a && sudo swapon -a"
-alias pls="sudo"
 convertvid(){
     ffmpeg -i "$1" -c:a copy "$2"
+}
+
+dotrun(){
+dotnet build --disable-build-servers;
+dotnet run --no-build "$@"
 }
 
 
@@ -123,6 +127,9 @@ alias vpn="/opt/cisco/anyconnect/bin/vpnui"
 alias brightness="light -S"
 alias scr="import screens/ss$(date +%s).png"
 alias androidbuild="~/Dokumenty/SDL/build-scripts/androidbuild.sh"
+
+#fix for packettracer
+alias packettracer="XDG_CURRENT_DESKTOP=GNOME /usr/bin/packettracer"
 
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PATH:$GEM_HOME/bin"
@@ -149,3 +156,5 @@ prompt_context() {
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
   fi
 }
+
+[ -f "/home/adaxiik/.ghcup/env" ] && source "/home/adaxiik/.ghcup/env" # ghcup-env
