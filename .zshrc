@@ -130,7 +130,7 @@ alias androidbuild="~/Dokumenty/SDL/build-scripts/androidbuild.sh"
 
 #fix for packettracer
 alias packettracer="XDG_CURRENT_DESKTOP=GNOME /usr/bin/packettracer"
-
+alias ssh="TERM=xterm-256color ssh"
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PATH:$GEM_HOME/bin"
 
@@ -139,9 +139,9 @@ export XDG_SESSION_DESKTOP=KDE
 export SAL_USE_VCLPLUGIN=kde5
 export KDE_SESSION_VERSION=5
 #source "/usr/lib/emsdk/emsdk_env.sh"
-export PATH=/usr/lib/emsdk:$PATH
-export PATH=/usr/lib/emsdk/node/14.18.2_64bit/bin:$PATH
-export PATH=/usr/lib/emsdk/upstream/emscripten:$PATH
+# export PATH=/usr/lib/emsdk:$PATH
+# export PATH=/usr/lib/emsdk/node/14.18.2_64bit/bin:$PATH
+# export PATH=/usr/lib/emsdk/upstream/emscripten:$PATH
 
 
 PATH="/opt/android-ndk:$PATH"                  # for 'ndk-build'
@@ -150,7 +150,8 @@ PATH="/opt/android-sdk/platform-tools:$PATH"  # for 'adb'
 export ANDROID_HOME="/opt/android-sdk"        # for gradle
 export ANDROID_NDK_HOME="/opt/android-ndk"     # for gradle
 
-
+export GCM_CREDENTIAL_STORE=cache
+export CLR_OPENSSL_VERSION_OVERRIDE=1.1
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
