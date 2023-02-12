@@ -14,3 +14,6 @@ cp ~/.config/nvim/init.vim ./init.vim
 
 #rasi
 cp ~/.config/rofi/config.rasi ./config.rasi
+
+#i3status
+cp /etc/i3status.conf ./i3status.conf
