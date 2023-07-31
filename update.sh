@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -xe
+
 #zsh
 cp ~/.zshrc ./.zshrc
 

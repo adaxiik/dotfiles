@@ -1,15 +1,17 @@
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/adaxiik/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="lukerandall"
+# ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -23,14 +25,13 @@ ZSH_THEME="agnoster"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -103,59 +104,72 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+
 alias zshconfig="nvim ~/.zshrc"
 alias i3config="nvim ~/.config/i3/config"
 
-alias cat="bat"
-alias pip="pip3"
-#alias ohmyzsh="nano ~/.oh-my-zsh"
 alias clearswap="sudo swapoff -a && sudo swapon -a"
+
 convertvid(){
     ffmpeg -i "$1" -c:a copy "$2"
 }
 
-dotrun(){
-dotnet build --disable-build-servers;
-dotnet run --no-build "$@"
+# dotnet exec --runtimeconfig ./AdminUI/bin/Debug/net7.0/AdminUI.runtimeconfig.json --depsfile ./AdminUI/bin/Debug/net7.0/AdminUI.deps.json ~/.nuget/packages/avalonia/0.10.18/tools/netcoreapp2.0/designer/Avalonia.Designer.HostApp.dll --transport file:///home/adaxiik/Dokumenty/art-reservation/AdminUI/MainWindow.axaml --method html --html-url http://127.0.0.1:6001 ./AdminUI/bin/Debug/net7.0/AdminUI.dll
+avaloniaview()
+{
+  # $1 pc
+  # $2 window path
+  # sudo apt-get install gridsite-clients
+  dotnet exec --runtimeconfig .//$1//bin/Debug/net7.0//$1.runtimeconfig.json --depsfile ./$1/bin/Debug/net7.0/$1.deps.json ~/.nuget/packages/avalonia/0.10.18/tools/netcoreapp2.0/designer/Avalonia.Designer.HostApp.dll --transport file://$PWD/$(urlencode -m "$1")/$2 --method html --html-url http://127.0.0.1:6001 ./$1/bin/Debug/net7.0/$1.dll
 }
 
+alias lvim="~/.local/bin/lvim"
 
 alias ls="lsd"
 alias la="lsd -la"
-alias monitor="btm"
-alias vpn="/opt/cisco/anyconnect/bin/vpnui"
+
 alias brightness="light -S"
 alias scr="import screens/ss$(date +%s).png"
-alias androidbuild="~/Dokumenty/SDL/build-scripts/androidbuild.sh"
-
-#fix for packettracer
-alias packettracer="XDG_CURRENT_DESKTOP=GNOME /usr/bin/packettracer"
 alias ssh="TERM=xterm-256color ssh"
-export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export PATH="$PATH:$GEM_HOME/bin"
+alias cal="if [ -t 1 ] ; then ncal -b ; else /usr/bin/cal ; fi"
+
+alias python="python3"
 
 export XDG_CURRENT_DESKTOP=KDE
 export XDG_SESSION_DESKTOP=KDE
 export SAL_USE_VCLPLUGIN=kde5
 export KDE_SESSION_VERSION=5
-#source "/usr/lib/emsdk/emsdk_env.sh"
-# export PATH=/usr/lib/emsdk:$PATH
-# export PATH=/usr/lib/emsdk/node/14.18.2_64bit/bin:$PATH
-# export PATH=/usr/lib/emsdk/upstream/emscripten:$PATH
+
+export EMSDK=/home/adaxiik/software/emsdk
+export EMSDK_NODE=/home/adaxiik/software/emsdk/node/16.20.0_64bit/bin/node
+export PATH=$PATH:/home/adaxiik/software/emsdk
+export PATH=$PATH:/home/adaxiik/software/emsdk/upstream/emscripten
+
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/go/bin
 
 
-PATH="/opt/android-ndk:$PATH"                  # for 'ndk-build'
-PATH="/opt/android-sdk/tools:$PATH"           # for 'android'
-PATH="/opt/android-sdk/platform-tools:$PATH"  # for 'adb'
-export ANDROID_HOME="/opt/android-sdk"        # for gradle
-export ANDROID_NDK_HOME="/opt/android-ndk"     # for gradle
+APPS=$(upcoming -filepath ~/appointments.txt | head -n 1)
+if [[ -n $APPS ]] ; then echo $APPS ; fi
 
-export GCM_CREDENTIAL_STORE=cache
-export CLR_OPENSSL_VERSION_OVERRIDE=1.1
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
   fi
 }
 
-[ -f "/home/adaxiik/.ghcup/env" ] && source "/home/adaxiik/.ghcup/env" # ghcup-env
+
+export WASMTIME_HOME="$HOME/.wasmtime"
+
+export PATH="$WASMTIME_HOME/bin:$PATH"
+# Wasmer
+export WASMER_DIR="/home/adaxiik/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

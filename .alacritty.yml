@@ -1,7 +1,9 @@
 window:
-  opacity: 0.85
+  opacity: 1.0
 # Normal colors
 colors: 
+  primary:
+    background: '0x181818'
   normal:
     #black:   '#2c3e50'
     red:     '#c0392b'
@@ -32,7 +34,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Hack
+    family: Hack Nerd Font
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
